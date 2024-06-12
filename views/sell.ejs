@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BU-MARKET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      /* RESET CSS */
+
+      @font-face {
+        font-family: "SF_HambakSnow";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .top-bar {
+        width: 100vw;
+        padding: 1vw 0;
+        background-color: #155598; /* bg-blue-800 */
+        box-shadow: 0 0.5vw 0.5vw rgba(0, 0, 0, 0.1); /* shadow */
+      }
+
+      .container {
+        width: 100%;
+        max-width: 83.3333vw;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-item {
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.9vw;
+        text-decoration: none;
+        padding: 1vw;
+        transition: color 0.3s, text-decoration 0.3s;
+      }
+
+      .nav-item:hover {
+        color: #e2cd2e; /* hover:text-gray-200 */
+        text-decoration: underline;
+      }
+
+      .icons {
+        display: flex;
+        align-items: center;
+        font-size: 1.6667vw;
+        color: #fff;
+      }
+
+      .icon-link {
+        color: inherit;
+        text-decoration: none;
+        padding-right: 1.6667vw;
+        transition: color 0.3s, text-decoration 0.3s;
+      }
+      .icon-link:hover {
+        color: #dc3939;
+      }
+
+      /* Text Header */
+      .header {
+        width: 100%;
+      }
+
+      .header-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3.3333vw 0;
+      }
+      .logo {
+        width: 18vw;
+        height: 15vh;
+      }
+
+      .form-container {
+        background-color: #fff;
+        padding: 1vw;
+        border-radius: 0.65vw;
+        box-shadow: 0 0 0.325vw rgba(0, 0, 0, 0.1);
+        width: 45.5vw;
+        max-width: 52vw;
+        margin-top: 7vh;
+      }
+
+      .form-group {
+        margin-bottom: 0.975vh;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.325vh;
+        font-weight: bold;
+        font-size: 1.3vw;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      textarea {
+        width: 100%;
+        padding: 0.65vw;
+        border: 0.065vw solid #ddd;
+        border-radius: 0.325vw;
+        font-size: 1.3vw;
+      }
+
+      input[type="file"] {
+        display: block;
+        margin-top: 0.65vh;
+        font-size: 1.17vw;
+      }
+
+      button {
+        width: 100%;
+        padding: 0.78vw;
+        background-color: #4a4df9;
+        color: #fff;
+        border: none;
+        border-radius: 0.325vw;
+        cursor: pointer;
+        font-size: 1.3vw;
+      }
+
+      button:hover {
+        background-color: #2729a4;
+      }
+
+      #image-preview {
+        margin-top: 0.65vh;
+        display: flex;
+        justify-content: center;
+      }
+
+      #image-preview img {
+        max-width: 100%;
+        max-height: 16.25vh;
+        border: 0.065vw solid #ddd;
+        border-radius: 0.325vw;
+      }
+    </style>
+  </head>
+  <body>
+    <%-include('top_bar.ejs')%>
+
+    <center>
+      <div class="form-container">
+        <form id="sell-form" action="/sell_submit" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" required />
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="description">설명</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label for="price">가격</label>
+            <input type="number" id="price" name="price" required />
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label for="contact">연락처</label>
+            <input type="text" id="contact" name="contact" required />
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label for="img">사진 업로드</label>
+            <input type="file" id="fileInput" name="img" accept="image/*" multiple required />
+            <div id="image-preview"></div>
+          </div>
+          <br />
+
+          <div class="form-group">
+            <label for="category">카테고리</label>
+            <select id="category" name="category" required>
+              <option value="1">책</option>
+              <option value="2">가구</option>
+              <option value="3">전자제품</option>
+              <option value="4">생활용품</option>
+              <option value="5">의류</option>
+              <option value="6">기타</option>
+            </select>
+          </div>
+
+          <button type="submit">판매 등록</button>
+        </form>
+      </div>
+    </center>
+  </body>
+</html>

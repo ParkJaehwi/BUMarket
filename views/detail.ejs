@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BU-MARKET</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+      html,
+      body,
+      div,
+      span,
+      applet,
+      object,
+      iframe,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      blockquote,
+      pre,
+      a,
+      abbr,
+      acronym,
+      address,
+      big,
+      cite,
+      code,
+      del,
+      dfn,
+      em,
+      img,
+      ins,
+      kbd,
+      q,
+      s,
+      samp,
+      small,
+      strike,
+      strong,
+      sub,
+      sup,
+      tt,
+      var,
+      b,
+      u,
+      i,
+      center,
+      dl,
+      dt,
+      dd,
+      ol,
+      ul,
+      li,
+      fieldset,
+      form,
+      label,
+      legend,
+      table,
+      caption,
+      tbody,
+      tfoot,
+      thead,
+      tr,
+      th,
+      td,
+      article,
+      aside,
+      canvas,
+      details,
+      embed,
+      figure,
+      figcaption,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      output,
+      ruby,
+      section,
+      summary,
+      time,
+      mark,
+      audio,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      article,
+      aside,
+      details,
+      figcaption,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      /* RESET CSS */
+
+      @font-face {
+        font-family: "SF_HambakSnow";
+        src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/SF_HambakSnow.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .top-bar {
+        width: 100vw;
+        padding: 1vw 0;
+        background-color: #155598; /* bg-blue-800 */
+        box-shadow: 0 0.5vw 0.5vw rgba(0, 0, 0, 0.1); /* shadow */
+      }
+
+      .container {
+        width: 100%;
+        max-width: 83.3333vw;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-item {
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.9vw;
+        text-decoration: none;
+        padding: 1vw;
+        transition: color 0.3s, text-decoration 0.3s;
+      }
+
+      .nav-item:hover {
+        color: #e2cd2e; /* hover:text-gray-200 */
+        text-decoration: underline;
+      }
+
+      .icons {
+        display: flex;
+        align-items: center;
+        font-size: 1.6667vw;
+        color: #fff;
+      }
+
+      .icon-link {
+        color: inherit;
+        text-decoration: none;
+        padding-right: 1.6667vw;
+        transition: color 0.3s, text-decoration 0.3s;
+      }
+      .icon-link:hover {
+        color: #dc3939;
+      }
+
+      /* Text Header */
+      .header {
+        width: 100%;
+      }
+
+      .header-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3.3333vw 0;
+      }
+      .logo {
+        width: 18vw;
+        height: 7vh;
+      }
+
+      /* Topic Nav */
+      .topic-nav {
+        width: 100%;
+        padding: 0.6vw 0;
+        border-top: 0.0694vw solid #e2e8f0;
+        border-bottom: 0.0694vw solid #e2e8f0;
+        background-color: #f7fafc; /* bg-gray-100 */
+      }
+
+      .topic-container {
+        width: 100%;
+        max-width: 83.3333vw;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .topic-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .topic-item {
+        color: #2d3748; /* text-gray-800 */
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.9722vw;
+        text-decoration: none;
+        padding: 0.5556vw 1.1111vh;
+        margin: 0.5556vw;
+        transition: background-color 0.3s, border-radius 0.3s;
+      }
+
+      .topic-item:hover {
+        background-color: #509afb; /* hover:bg-gray-400 */
+        border-radius: 0.2778vw;
+      }
+
+      .slider-container {
+        position: relative;
+        width: 80vw;
+        height: 60vh; /* Adjust the height as needed */
+        overflow: hidden;
+        border: 0.0694vw solid #ddd;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        height: 100%;
+      }
+
+      .slide {
+        min-width: 100%;
+        text-align: center;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .slide p {
+        margin-top: 0.694vh;
+        font-size: 1.3333vw;
+      }
+
+      .slider-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 0.694vw;
+        cursor: pointer;
+        z-index: 10;
+        font-size: 2.2222vw;
+      }
+
+      .prev-button {
+        left: 0.694vw;
+      }
+
+      .next-button {
+        right: 0.694vw;
+      }
+
+      .slider-button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      .slideImg {
+        width: 100%;
+        height: auto;
+        max-height: 80%; /* Adjust to fit within the slide */
+      }
+      .search-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .search-input {
+        width: 20vw;
+        padding: 0.45vw;
+        border: none;
+        border-radius: 0.45vw 0 0 0.45vw;
+        font-size: 1vw;
+      }
+
+      .search-button {
+        padding: 0.45vw 0.9vw;
+        border: none;
+        border-radius: 0 0.45vw 0.45vw 0;
+        background-color: #5a70eb;
+        color: white;
+        font-size: 1vw;
+        cursor: pointer;
+      }
+
+      .search-button:hover {
+        background-color: #32427d;
+      }
+
+      /*share.html*/
+      .item-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 3vh;
+      }
+
+      .item {
+        width: 20vw;
+        margin: 3vh;
+        background-color: #fff;
+        border-radius: 1.2vw;
+        box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+
+      .item img {
+        width: 100%;
+        height: auto;
+        border-radius: 1.2vw 1.2vw 0 0;
+      }
+
+      .item h3,
+      .item p {
+        padding: 1.5vw;
+        margin: 0;
+      }
+
+      .item h3 {
+        font-size: 1.2vw;
+        color: #333;
+      }
+
+      .item p {
+        font-size: 1vw;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top-bar">
+      <div class="container">
+        <nav>
+          <ul class="nav-links">
+            <li><a class="nav-item" href="/">Home</a></li>
+            <li><a class="nav-item" href="/menu/sell">SELL</a></li>
+          </ul>
+        </nav>
+        <div class="search-container">
+          <input type="text" class="search-input" />
+          <button class="search-button">검색</button>
+        </div>
+        <div class="icons">
+          <a class="icon-link" href="/menu/wishlist">
+            <i class="fas fa-heart"></i>
+          </a>
+          <a class="icon-link" href="/menu/login">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <%-include('header.ejs')%> <%-include('menu.ejs')%>
+
+    <center>
+      <p style="font-size: 3vw; font-weight: 700"><%= result.title %></p>
+      <br />
+
+      <% if (result.imgUrl) { %> <% for( let i = 0; i < result.imgUrl.length; i++ ) { %>
+      <img width="25%" src="<%= result.imgUrl[i] %>" />
+      <% } %> <% } %>
+      <br />
+      <p style="font-size: 2vw; font-weight: 500"><%= result.description %></p>
+    </center>
+  </body>
+</html>
