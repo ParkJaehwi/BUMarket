@@ -405,59 +405,25 @@
       </div>
     </nav>
     <%-include('header.ejs')%> <%-include('menu.ejs')%>
-    
+
     <center>
       <div class="slider-container">
         <button class="slider-button prev-button" onclick="prevSlide()">&#10094;</button>
         <div class="slider">
-            <div class="slide">
-                <img src="./bu1.jpg" class="slideImg" alt="Image 1">
-            </div>
-            <div class="slide">
-                <img src="./bu2.jpg" class="slideImg" alt="Image 2">
-            </div>
-            <div class="slide">
-                <img src="./bu3.jpg" class="slideImg" alt="Image 3">
-            </div>
+          <div class="slide">
+            <img src="./bu1.jpg" class="slideImg" alt="Image 1" />
+          </div>
+          <div class="slide">
+            <img src="./bu2.jpg" class="slideImg" alt="Image 2" />
+          </div>
+          <div class="slide">
+            <img src="./bu3.jpg" class="slideImg" alt="Image 3" />
+          </div>
         </div>
         <button class="slider-button next-button" onclick="nextSlide()">&#10095;</button>
-        <script>
-          let currentIndex = 0;
+      </div>
 
-function showSlide(index) {
-    const slides = document.querySelectorAll('.slide');
-    const slider = document.querySelector('.slider');
-
-    if (index >= slides.length) {
-        currentIndex = 0;
-    } else if (index < 0) {
-        currentIndex = slides.length - 1;
-    } else {
-        currentIndex = index;
-    }
-
-    const offset = -currentIndex * 100;
-    slider.style.transform = `translateX(${offset}%)`;
-}
-
-function nextSlide() {
-    showSlide(currentIndex + 1);
-}
-
-function prevSlide() {
-    showSlide(currentIndex - 1);
-}
-
-// Initialize the slider
-showSlide(currentIndex);
-
-        </script>
-    </div>
-
-      <% if (result.length == 0) { %>
-      <br /><br /><br />
-      <p>등록된 물건이 없습니다.</p>
-      <% } %> <% for( let i = 0; i < result.length; i++ ) { %>
+      <% for( let i = 0; i < result.length; i++ ) { %>
       <div class="item-container">
         <a style="text-decoration: none" href="/detail/<%= result[i]._id %>">
           <div class="item">
@@ -470,5 +436,35 @@ showSlide(currentIndex);
 
       <% } %>
     </center>
+    <script>
+      let currentIndex = 0;
+
+      function showSlide(index) {
+        const slides = document.querySelectorAll(".slide");
+        const slider = document.querySelector(".slider");
+
+        if (index >= slides.length) {
+          currentIndex = 0;
+        } else if (index < 0) {
+          currentIndex = slides.length - 1;
+        } else {
+          currentIndex = index;
+        }
+
+        const offset = -currentIndex * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      // Initialize the slider
+      showSlide(currentIndex);
+    </script>
   </body>
 </html>

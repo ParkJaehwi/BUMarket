@@ -85,7 +85,7 @@ app.get("/menu/:menu", (req, res) => {
 app.get("/category/:category", async (req, res) => {
   let result = await db.collection("sell").find({ category: req.params.category }).sort({ date: -1 }).toArray();
   console.log(result);
-  res.render("index.ejs", { result: result });
+  res.render("list.ejs", { result: result });
 });
 
 app.post("/sell_submit", async (req, res) => {

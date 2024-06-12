@@ -382,35 +382,76 @@
     </style>
   </head>
   <body>
-    <%-include('top_bar.ejs')%> <%-include('menu.ejs')%>
+    <nav class="top-bar">
+      <div class="container">
+        <nav>
+          <ul class="nav-links">
+            <li><a class="nav-item" href="/">Home</a></li>
+            <li><a class="nav-item" href="/menu/sell">SELL</a></li>
+          </ul>
+        </nav>
+        <div class="search-container">
+          <input type="text" class="search-input" />
+          <button class="search-button">검색</button>
+        </div>
+        <div class="icons">
+          <a class="icon-link" href="/menu/wishlist">
+            <i class="fas fa-heart"></i>
+          </a>
+          <a class="icon-link" href="/menu/login">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <%-include('header.ejs')%> <%-include('menu.ejs')%>
 
-    <div class="item-container">
-      <div class="item">
-        <img src="./호날두.jpeg" alt="Item 1" />
-        <h3>상품 제목 1</h3>
-        <p>가격: $10</p>
+    <center>
+      <% if (result.length == 0) { %>
+      <br /><br /><br />
+      <p>등록된 물건이 없습니다.</p>
+      <% } %> <% for( let i = 0; i < result.length; i++ ) { %>
+      <div class="item-container">
+        <a style="text-decoration: none" href="/detail/<%= result[i]._id %>">
+          <div class="item">
+            <img src="<%= result[i].imgUrl[0] %>" alt="Item 2" />
+            <h3 style="font-size: 1.5vw; font-weight: 600"><%= result[i].title %></h3>
+            <p style="font-size: 1.1vw; font-weight: 600"><%= result[i].price %>원</p>
+          </div>
+        </a>
       </div>
-      <div class="item">
-        <img src="./호날두.jpeg" alt="Item 2" />
-        <h3>상품 제목 2</h3>
-        <p>가격: $20</p>
-      </div>
-      <div class="item">
-        <img src="./호날두.jpeg" alt="Item 2" />
-        <h3>상품 제목 2</h3>
-        <p>가격: $20</p>
-      </div>
-      <div class="item">
-        <img src="./호날두.jpeg" alt="Item 2" />
-        <h3>상품 제목 2</h3>
-        <p>가격: $20</p>
-      </div>
-      <div class="item">
-        <img src="./호날두.jpeg" alt="Item 2" />
-        <h3>상품 제목 2</h3>
-        <p>가격: $20</p>
-      </div>
-      <!-- 나머지 아이템들도 동일한 형식으로 추가 -->
-    </div>
+
+      <% } %>
+    </center>
+    <script>
+      let currentIndex = 0;
+
+      function showSlide(index) {
+        const slides = document.querySelectorAll(".slide");
+        const slider = document.querySelector(".slider");
+
+        if (index >= slides.length) {
+          currentIndex = 0;
+        } else if (index < 0) {
+          currentIndex = slides.length - 1;
+        } else {
+          currentIndex = index;
+        }
+
+        const offset = -currentIndex * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      // Initialize the slider
+      showSlide(currentIndex);
+    </script>
   </body>
 </html>
