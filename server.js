@@ -105,6 +105,7 @@ app.post("/sell_submit", async (req, res) => {
         // user: req.user._id,
         // username: req.user.username,
         // nickname: req.user.nickname,
+        like: false,
         price: req.body.price,
         contact: req.body.contact,
         category: req.body.category,

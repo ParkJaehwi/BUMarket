@@ -379,55 +379,54 @@
         font-size: 1vw;
         color: #666;
       }
-      .detail-box{
-            border: 0.01vw solid black;
-            border-radius: 2vw;
-            width: 60vw;
-            height: 60vh;
-            margin-top: 5vh;
-            box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1);
-        }
-        .de-category{
-            color: gray;
-            font-size: 0.9vw;
-            float: left;
-            margin: 2vw;
-        }
-        .de-img{
-            float: left;
-            width: 20vw;    
-            height: 40vh;
-            margin-top: 5vw;
-        }
-        .de-box2{
-            margin-top: 7vw;
-
-        }
-        .de-text1{
-            font-size: 2.3vw;
-            font-weight: bold;
-        }
-        .de-text2{
-            margin-top: 4vh;
-            font-size: 1.5vw;
-        }
-        .de-info{
-            border: 0.01vw solid black;
-            border-radius: 2vw;
-            width: 60vw;
-            height: 30vh;
-            margin-top: 5vh;
-            box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1);
-        }
-        .info{
-            font-size: 1.2vw;
-            float: left;
-            margin: 2vw;
-        }
-        .info-text{
-            margin-top: 5vw;
-            width: 40vw;
-        }
+      .detail-box {
+        border: 0.01vw solid black;
+        border-radius: 2vw;
+        width: 60vw;
+        height: 60vh;
+        margin-top: 5vh;
+        box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1);
+      }
+      .de-category {
+        color: gray;
+        font-size: 0.9vw;
+        float: left;
+        margin: 2vw;
+      }
+      .de-img {
+        float: left;
+        width: 20vw;
+        height: 40vh;
+        margin-top: 5vw;
+      }
+      .de-box2 {
+        margin-top: 7vw;
+      }
+      .de-text1 {
+        font-size: 2.3vw;
+        font-weight: bold;
+      }
+      .de-text2 {
+        margin-top: 4vh;
+        font-size: 1.5vw;
+      }
+      .de-info {
+        border: 0.01vw solid black;
+        border-radius: 2vw;
+        width: 60vw;
+        height: 30vh;
+        margin-top: 5vh;
+        box-shadow: 0 0 2vw rgba(0, 0, 0, 0.1);
+      }
+      .info {
+        font-size: 1.2vw;
+        float: left;
+        margin: 2vw;
+      }
+      .info-text {
+        margin-top: 5vw;
+        width: 40vw;
+      }
     </style>
   </head>
   <body>
@@ -456,28 +455,25 @@
     <%-include('header.ejs')%> <%-include('menu.ejs')%>
 
     <center>
-      <!-- <p style="font-size: 3vw; font-weight: 700"><%= result.title %></p>
-      <br />
-
-      <% if (result.imgUrl) { %> <% for( let i = 0; i < result.imgUrl.length; i++ ) { %>
-      <img width="25%" src="<%= result.imgUrl[i] %>" />
-      <% } %> <% } %>
-      <br />
-      <p style="font-size: 2vw; font-weight: 500"><%= result.description %></p> -->
-
       <div class="detail-box">
-        <p class="de-category">카테고리</p>
-        <img src="./호날두.jpeg" class="de-img">
+        <% let category = "" %> <% if(result.category == "1"){category = "책"} %> <% if(result.category == "2"){category
+        = "가구"} %> <% if(result.category == "3"){category = "전자제품"} %> <% if(result.category == "4"){category =
+        "생활용품"} %> <% if(result.category == "5"){category = "의류"} %> <% if(result.category == "6"){category =
+        "기타"} %>
+        <p class="de-category">카테고리: <%= category %></p>
+        <% if (result.imgUrl) { %> <% for( let i = 0; i < result.imgUrl.length; i++ ) { %>
+        <img class="de-img" width="25%" src="<%= result.imgUrl[i] %>" />
+        <% } %> <% } %>
         <div class="de-box2">
-          <p class="de-text1">제목</p>
-          <p class="de-text2">가격</p>
-          <p class="de-text2">상품명</p>
-          <p class="de-text2">연락처</p>
+          <p class="de-text1"><%= result.title %></p>
+          <br /><br />
+          <p class="de-text2">가격: <%= result.price %>원</p>
+          <p class="de-text2">연락처: <%= result.contact %></p>
         </div>
       </div>
       <div class="de-info">
-          <p class="info">상세설명</p>
-          <p class="info-text">산지 5일됐습니다. 완전 새 상품이며 사실분은 연락주세요</p>
+        <p class="info">상세설명</p>
+        <p class="info-text"><%= result.description %></p>
       </div>
     </center>
   </body>
