@@ -343,42 +343,45 @@
 
       /*share.html*/
       .item-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 3vh;
-      }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 3vh;
+    gap: 3vh; /* 아이템 간의 간격 조절 */
+  }
 
-      .item {
-        width: 20vw;
-        margin: 3vh;
-        background-color: #fff;
-        border-radius: 1.2vw;
-        box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-      }
+  .item {
+    flex: 1 1 calc(25% - 6vh); /* 각 아이템의 너비를 컨테이너의 25%로 설정 */
+    max-width: calc(25% - 6vh); /* 아이템이 컨테이너 너비의 25%를 넘지 않도록 설정 */
+    margin: 1.5vh; /* 각 아이템 주위에 여백 추가 */
+    background-color: #fff;
+    border-radius: 1.2vw;
+    box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
 
-      .item img {
-        width: 100%;
-        height: auto;
-        border-radius: 1.2vw 1.2vw 0 0;
-      }
+  .item img {
+    width: 100%;
+    height: 20vh; /* 이미지 높이를 20vh로 고정 */
+    object-fit: cover; /* 이미지가 영역을 채우도록 설정 */
+    border-radius: 1.2vw 1.2vw 0 0;
+  }
 
-      .item h3,
-      .item p {
-        padding: 1.5vw;
-        margin: 0;
-      }
+  .item h3,
+  .item p {
+    padding: 1.5vw;
+    margin: 0;
+  }
 
-      .item h3 {
-        font-size: 1.2vw;
-        color: #333;
-      }
+  .item h3 {
+    font-size: 1.5vw; /* 읽기 쉽도록 글꼴 크기 조정 */
+    color: #333;
+  }
 
-      .item p {
-        font-size: 1vw;
-        color: #666;
-      }
+  .item p {
+    font-size: 1.1vw; /* 읽기 쉽도록 글꼴 크기 조정 */
+    color: #666;
+  }
     </style>
   </head>
   <body>
@@ -390,10 +393,6 @@
             <li><a class="nav-item" href="/menu/sell">SELL</a></li>
           </ul>
         </nav>
-        <div class="search-container">
-          <input type="text" class="search-input" />
-          <button class="search-button">검색</button>
-        </div>
         <div class="icons">
           <a class="icon-link" href="/menu/wishlist">
             <i class="fas fa-heart"></i>
@@ -410,8 +409,8 @@
       <% if (result.length == 0) { %>
       <br /><br /><br />
       <p>등록된 물건이 없습니다.</p>
-      <% } %> <% for( let i = 0; i < result.length; i++ ) { %>
       <div class="item-container">
+      <% } %> <% for( let i = 0; i < result.length; i++ ) { %>
         <a style="text-decoration: none" href="/detail/<%= result[i]._id %>">
           <div class="item">
             <img src="<%= result[i].imgUrl[0] %>" alt="Item 2" />
@@ -419,9 +418,8 @@
             <p style="font-size: 1.1vw; font-weight: 600"><%= result[i].price %>원</p>
           </div>
         </a>
-      </div>
-
       <% } %>
+    </div>
     </center>
     <script>
       let currentIndex = 0;
